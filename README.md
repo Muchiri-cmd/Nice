@@ -1,0 +1,1 @@
+Minimalistic MERN shop website
