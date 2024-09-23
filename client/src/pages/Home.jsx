@@ -1,11 +1,14 @@
 import Hero from '../components/Hero'
-import Collections from '../components/Collections'
+import { Collections,Featured,Banner, NewArrivals, } from '../components'
 
 const Home = () => {
   return (
     <div>
       <Hero/>
       <Collections/>
+      <Featured/>
+      <Banner/>
+      <NewArrivals/>
     </div>
   )
 }

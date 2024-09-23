@@ -38,7 +38,7 @@ const Header = () => {
         <div className="flexBetween sm:gap-x-2 bold-16">
           <div className="flexBetween sm:gap-x-6">
             <NavLink to={"/wishlist"} className="flex">
-              <img src={wsIcon} alt="wishlist" width={25} className="p-1 h-10 w-10 ring-1 ring-slate-900/10 rounded-full hover:text-secondary"/>
+              <img src={wsIcon} alt="wishlist" width={25} className="p-1 h-10 w-10 hover:text-secondary"/>
               <span className="relative flexCenter w-5 h-5 rounded-full text-primary bg-red-600 medium-14 -top-1">0</span>
             </NavLink>
             
