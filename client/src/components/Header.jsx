@@ -10,15 +10,16 @@ const Header = () => {
   //keep track of toggleMenu
   const [toggledMenu, setToggledMenu] = useState(false)
   const toggleMenu = () => setToggledMenu(!toggledMenu)
+  const closeMenu = () => setToggledMenu(false);
 
   return (
-    <header className="max-padd-container w-full z-50">
+    <header className="max-padd-container w-full z-10 py-5 bg-white fixed left-1/2 transform -translate-x-1/2">
       <div className="flexBetween py-1">
         <div className='flex flex-1'>
         {/* bg-secondary rounded-full */}
-          <div className='h-24 w-24 flexCenter absolute top-0 px-2'>
+          <div className='h-24 w-90 flexCenter absolute top-0 px-2'>
             <Link to ={'/'}>
-              <img src={mainlogo} alt="logo" height={166} width={188}/>
+              <img src={mainlogo} alt="logo" className="h-[50px] w-[200px] sm:h-[50px] sm:w-[240px] md:h-[60px] md:w-[300px] bg-white" />
             </Link>
           </div>
         </div>
@@ -32,7 +33,7 @@ const Header = () => {
         <div className="">
           <Navbar containerStyles={`${toggledMenu ? 
             "flex items-start flex-col gap-y-8 fixed top-20 right-8 p-12 bg-white rounded-3xl shadow-md w-64 medium-16 ring-1 ring-slate-900/5 transition-all duration-300 z-50" 
-            : "flex items-start flex-col gap-y-8 fixed top-20 p-12 bg-white rounded-3xl shadow-md w-64 medium-16 ring-1 ring-slate-900/5 transition-all duration-300 -right-[100%]" }`}/>
+            : "flex items-start flex-col gap-y-8 fixed top-20 p-12 bg-white rounded-3xl shadow-md w-64 medium-16 ring-1 ring-slate-900/5 transition-all duration-300 -right-[100%]" }`} closeMenu={closeMenu}/>
         </div>
        
         <div className="flexBetween sm:gap-x-2 bold-16">

@@ -7,7 +7,7 @@ const Collections = () => {
     <h1 className='text-[45px] font-bold text-secondary hover:cursor-pointer'>Our Collections</h1>
     <div className='grid gap-8 grid-cols-1 xs:grid-cols-2 md:md:grid-cols-3 xl:grid-cols-4 mt-10'>
       <div className='hidden xl:flex flex-col ring-1 ring-slate-900/5 rounded-3xl overflow-hidden shadow-sm'>
-        <div><img src={banner} alt="banner" style={{ height: '450px' }}/></div>
+        <div><img src={banner} alt="banner" style={{ height: '350px' }}/></div>
         <div className='px-5'>
           <h4 className='medium-18 mt-4'>Universal Collections</h4>
           <p className='my-2'>
@@ -21,7 +21,7 @@ const Collections = () => {
 
       <div >
         <div className='ring-1 ring-slate-900/5 rounded-3xl text-white'>
-          <img src={mens} alt="mens collection image" className='rounded-3xl' style={{ height: '450px' }}/>
+          <img src={mens} alt="mens collection image" className='rounded-3xl' style={{ height: '350px' }}/>
         </div>
         <div className='px-5'>
         <h4 className='medium-18 mt-4'>Men's Collection</h4>
@@ -36,7 +36,7 @@ const Collections = () => {
 
       <div>
         <div className='ring-1 ring-slate-900/5 rounded-3xl text-white'>
-          <img src={womens} alt="womens collection image" className='rounded-3xl' style={{ height: '450px' }}/>
+          <img src={womens} alt="womens collection image" className='rounded-3xl' style={{ height: '350px' }}/>
         </div>
         <div className='px-5'>
         <h4 className='medium-18 mt-4'>Women's Collection</h4>
@@ -51,7 +51,7 @@ const Collections = () => {
 
       <div>
         <div className='ring-1 ring-slate-900/5 rounded-3xl text-white'>
-          <img src={kids} alt="kids collection image" className='rounded-3xl' style={{ height: '450px' }}/>
+          <img src={kids} alt="kids collection image" className='rounded-3xl' style={{ height: '350px' }}/>
         </div>
         <div className='px-5'>
         <h4 className='medium-18 mt-4'>Kids' Collection</h4>

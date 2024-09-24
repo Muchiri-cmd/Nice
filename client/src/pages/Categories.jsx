@@ -9,9 +9,10 @@ const Categories = ( {category, banner }) => {
 
   return (
     <section className="max-padd-container">
+      <div className="h-[70px]"></div>
       <div>
         <div className="max-sm:mt-4">
-          <img src={banner} alt="banner" className="block mb-7 mx-auto rounded-3xl"/>
+          <img src={banner} alt="banner" className="block mb-7 mx-auto rounded-3xl w-full"/>
         </div>
         <div className="flexBetween my-10 mx-2">
           <h5><span className="font-bold">Showing 1-12</span> out of 36 products</h5>

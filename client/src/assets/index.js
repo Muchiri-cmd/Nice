@@ -1,4 +1,4 @@
-import mainlogo from './logo/mainlogo.png';
+import mainlogo from './logo/logo2.png';
 import wsIcon from './wishlist.png';
 import mens from './banner/mens.jpeg'
 import womens from './banner/womens.jpeg'

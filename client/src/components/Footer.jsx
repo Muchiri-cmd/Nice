@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { footer } from '../assets'
+import { mainlogo } from '../assets'
 import { socials,footer_contact_info,footer_links } from '../constants';
 
 const FooterColumn = ({title,children}) => {
@@ -21,8 +21,8 @@ const Footer = () => {
               className='mb-10 bold-28'
             ><span className='bold-36 text-secondary'>N</span>ice Boutique</Link>
             <div className='mb-8'>
-              <p className='mt-3'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis, eligendi sunt?</p>
-              <img src={footer} alt="" className='rounded-md mt-6 w-44 shadow-md'/>
+              <p className='mt-2'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis, eligendi sunt?</p>
+              <img src={mainlogo} alt="logo" className="h-[50px] w-[250px] sm:h-[50px] sm:w-[240px] md:h-[60px] md:w-[300px] bg-white" />
             </div>
           </div>
           <div className='flex flex-wrap gap-8 sm:justify-between md:flex-1'>{footer_links.map((col) => (
