@@ -9,6 +9,7 @@ import all_products from './all_products';
 import mensbanner from './banner/bannermens.png'
 import womensbanner from './banner/bannerwomens.png'
 import kidsbanner from './banner/bannerkids.png'
+import whatsappicon from './whatsapp.svg'
 
 
-export { mainlogo,wsIcon,mens,womens,kids , banner , footer , all_products ,mensbanner,womensbanner,kidsbanner};
+export { mainlogo,wsIcon, whatsappicon, mens,womens,kids , banner , footer , all_products ,mensbanner,womensbanner,kidsbanner };

@@ -1,10 +1,14 @@
-import React from 'react'
+import { ProductDetailView } from "../components"
+
+
 
 const Products = () => {
   return (
-    <div>
-      Products
-    </div>
+    <section>
+      <div>
+        <ProductDetailView/>
+      </div>
+    </section>
   )
 }
 

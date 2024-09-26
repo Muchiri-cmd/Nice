@@ -8,4 +8,24 @@ import Product from "./Product";
 import Banner from "./Banner";
 import NewArrivals from "./NewArrivals";
 
-export { Header, Navbar, Footer,Hero,Collections,Featured,Product,Banner,NewArrivals };
+import ProductDetailView from "./ProductDetailView";
+import ProductDisplay from "./ProductDisplay";
+import ProductDescription from "./ProductDescription";
+import RelatedProducts from "./RelatedProducts";
+
+export { 
+    Header,
+    Navbar,
+    Footer,
+    Hero,
+    Collections,
+    Featured,
+    Product,
+    Banner,
+    NewArrivals,
+
+    ProductDisplay,
+    ProductDetailView,
+    ProductDescription,
+    RelatedProducts
+}

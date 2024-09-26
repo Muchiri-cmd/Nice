@@ -1,5 +1,5 @@
 import { BrowserRouter,Route,Routes } from 'react-router-dom'
-import { Header,Footer } from './components'
+import { Header,Footer, ProductDetailView } from './components'
 import { Home,Categories, Products } from './pages'
 import { mensbanner,womensbanner,kidsbanner } from './assets'
 
@@ -14,7 +14,7 @@ function App() {
           <Route path="/women" element={<Categories category={"women"} banner={womensbanner}/>}/>
           <Route path="/kids" element={<Categories category={"kids"}  banner={kidsbanner}/>}/>
           <Route path="/products" element={<Products/>} >
-              <Route path=":productId" element={<Products />} />
+              <Route path=":productId" element={<ProductDetailView />} />
           </Route>
         </Routes>
         <Footer/>

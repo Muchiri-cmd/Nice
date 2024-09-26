@@ -17,7 +17,7 @@ const Product = ({id, name, image, current_price , initial_price}) => {
             <div className='text-3xl font-bold'>Ksh {current_price}</div>
             <div className='text-secondary bold-14 line-through'>Ksh {initial_price}</div>
           </div>
-          <Link to={`/product/${id}`} className='group'>
+          <Link to={`/products/${id}`} className='group'>
             <FaEye className=' text-secondary rounded-full h-10 w-10 p-1.5 group-hover:scale-110 transition-all duration-500' />
           </Link>
         </div>
