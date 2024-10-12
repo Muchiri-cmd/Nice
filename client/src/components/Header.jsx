@@ -1,16 +1,19 @@
 import { Link } from 'react-router-dom'
 import Navbar from './Navbar'
 import { mainlogo } from '../assets'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import {MdMenu,MdClose} from 'react-icons/md'
 import { wsIcon } from '../assets'
 import { NavLink } from 'react-router-dom'
+import { ShopContext } from '../context/Shop'
 
 const Header = () => {
   //keep track of toggleMenu
   const [toggledMenu, setToggledMenu] = useState(false)
   const toggleMenu = () => setToggledMenu(!toggledMenu)
   const closeMenu = () => setToggledMenu(false);
+
+  const {getNumberofItems} = useContext(ShopContext)
 
   return (
     <header className="max-padd-container w-full z-10 py-5 bg-white fixed left-1/2 transform -translate-x-1/2">
@@ -40,7 +43,7 @@ const Header = () => {
           <div className="flexBetween sm:gap-x-6">
             <NavLink to={"/wishlist"} className="flex">
               <img src={wsIcon} alt="wishlist" width={25} className="p-1 h-10 w-10 hover:text-secondary"/>
-              <span className="relative flexCenter w-5 h-5 rounded-full text-primary bg-red-600 medium-14 -top-1">0</span>
+              <span className="relative flexCenter w-5 h-5 rounded-full text-primary bg-red-600 medium-14 -top-1">{getNumberofItems()}</span>
             </NavLink>
             
           </div>

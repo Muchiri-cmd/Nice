@@ -1,9 +1,12 @@
 import {FaStar} from "react-icons/fa6"
 import { FaGreaterThan } from 'react-icons/fa'; 
 import { wsIcon,whatsappicon } from "../assets";
+import { useContext } from "react";
+import { ShopContext } from "../context/Shop";
 
 const ProductDisplay = (props) => {
   const { product } = props
+  const { addToWishlist } = useContext(ShopContext)
 
   return (
     <>
@@ -63,7 +66,9 @@ const ProductDisplay = (props) => {
                 </div>
               </div>
               <div className="flex gap-5 mb-12 ">
-                <button className='rounded-md flex items-center gap-x-5 ring-1 ring-slate-900 px-2'>Add to wishlist
+                <button 
+                  onClick = {() => {addToWishlist(product.id)}}
+                  className='rounded-md flex items-center gap-x-5 ring-1 ring-slate-900 px-2'>Add to wishlist
                   <img src={wsIcon} alt="like" width={25} className="p-1 h-20 w-20 text-white"/>
                 </button>
                 <button className=' rounded-md flex items-center gap-x-5 ring-1 ring-slate-900 px-2'>Whatsapp Me

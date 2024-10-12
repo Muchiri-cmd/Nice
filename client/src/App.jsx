@@ -1,6 +1,6 @@
 import { BrowserRouter,Route,Routes } from 'react-router-dom'
 import { Header,Footer, ProductDetailView } from './components'
-import { Home,Categories, Products } from './pages'
+import { Home,Categories, Products,WishList } from './pages'
 import { mensbanner,womensbanner,kidsbanner } from './assets'
 
 function App() {
@@ -16,6 +16,7 @@ function App() {
           <Route path="/products" element={<Products/>} >
               <Route path=":productId" element={<ProductDetailView />} />
           </Route>
+          <Route path="/wishlist" element={ <WishList/>}/>
         </Routes>
         <Footer/>
       </BrowserRouter>

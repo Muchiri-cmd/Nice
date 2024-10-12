@@ -1,7 +1,12 @@
+
+import WishListItems from "../components/WishListItems"
+
 const WishList = () => {
   return (
     <div>
-      Wishlist
+
+      <WishListItems/>
+
     </div>
   )
 }
