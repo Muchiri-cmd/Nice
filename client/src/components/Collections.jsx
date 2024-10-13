@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 const Collections = () => {
   return (
-    <section className='max-padd-container py-14 xl:py-24'>
+    <section className='max-padd-container py-14 xl:py-24' id="collections">
     <h1 className='text-[45px] font-bold text-secondary hover:cursor-pointer'>Our Collections</h1>
     <div className='grid gap-8 grid-cols-1 xs:grid-cols-2 md:md:grid-cols-3 xl:grid-cols-4 mt-10'>
       <div className='hidden xl:flex flex-col ring-1 ring-slate-900/5 rounded-3xl overflow-hidden shadow-sm'>

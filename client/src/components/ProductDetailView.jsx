@@ -1,4 +1,4 @@
-import { ProductDisplay,ProductDescription,RelatedProducts } from "."
+import { ProductDisplay,RelatedProducts } from "." //ProductDescription
 import { useContext } from "react"
 import { ShopContext } from "../context/Shop"
 import { useParams } from "react-router-dom"
@@ -19,8 +19,8 @@ const ProductDetailView = () => {
     <section className='max-padd-container '>
       <div className='max-padd-contianer bg-primary rounded-3xl py-28'>
         <ProductDisplay product={product}/>
-        <ProductDescription/>
-        <RelatedProducts category={product.category}/>
+        {/* <ProductDescription/> */}
+        <RelatedProducts category={product.category} id={productId}/>
       </div>
       
     </section>

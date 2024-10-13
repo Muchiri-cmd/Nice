@@ -123,6 +123,19 @@ app.get('/products', async (req, res) => {
 
 });
 
+app.get('/recent-products', async (req, res) => {
+  try {
+    const products = await Product.find({})
+      .sort({ date: -1 })  
+      .limit(17);  
+
+    res.send(products);
+  } catch (error) {
+    console.error('Error fetching recent products:', error)
+    res.status(500).send('Error fetching recent products')
+  }
+})
+
 //user schema
 const User = mongoose.model('User', {
   email:{

@@ -1,12 +1,12 @@
 import Hero from '../components/Hero'
-import { Collections,Featured,Banner, NewArrivals, } from '../components'
+import { Collections,Banner, NewArrivals, } from '../components' //Featured
 
 const Home = () => {
   return (
     <div>
       <Hero/>
       <Collections/>
-      <Featured/>
+      {/* <Featured/> */}
       <Banner/>
       <NewArrivals/>
     </div>

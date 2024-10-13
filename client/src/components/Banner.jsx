@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
-import { FaArrowRightLong } from "react-icons/fa6"
+
+import { MdNotifications } from 'react-icons/md';
 
 const Banner = () => {
   return (
@@ -11,9 +12,13 @@ const Banner = () => {
       <Link
         to={'/'}
         className='text-tertiary bg-white pl-6 rounded-full flexBetween gap-x-2 medium-16 w-44 mt-10 mx-5'
-        >Go to shop
-        <FaArrowRightLong className='text-xl bg-secondary text-primary rounded-full h-12 w-12 p-4
-        hover:-rotate-45 transition-all duration-500 border-dashed border-white '/>
+        >Offers
+          <div className='relative inline-block'>
+          <MdNotifications
+            className='text-xl bg-secondary text-primary rounded-full h-12 w-12 p-2 border border-dashed border-white animate-pulse'
+          />
+          <span className='absolute top-0 right-0 h-3 w-3 bg-red-500 rounded-full animate-ping'></span>
+        </div>
       </Link>
     </div>
    </section>

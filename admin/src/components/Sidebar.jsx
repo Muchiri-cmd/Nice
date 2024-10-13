@@ -11,7 +11,7 @@ const Sidebar = () => {
     lg:max-w-60 lg:h-screen lg:justify-start lg:pl-6'>
       <Link to="/add-product">
         <button
-          className="flex items-center justify-center font-semibold h-12 w-60 xs:w-44 gap-2 text-white bg-secondary 
+          className="flex items-center justify-center font-semibold h-12 w-32 sm:2-60 xs:w-44 gap-2 text-white bg-secondary 
           rounded-md shadow-md transition-all duration-300 ease-in-out medium-16"        
         >
          <span>Add Products </span>
@@ -19,7 +19,7 @@ const Sidebar = () => {
       </Link>
       <Link to="/products-list">
         <button
-          className="flex items-center justify-center font-semibold h-12 w-60 xs:w-44 gap-2 text-white bg-secondary 
+          className="flex items-center justify-center font-semibold h-12 w-32 sm:2-60 xs:w-44 gap-2 text-white bg-secondary 
           rounded-md shadow-md transition-all duration-300 ease-in-out medium-16"        
         >
          <span>Listed Products </span>
@@ -28,7 +28,7 @@ const Sidebar = () => {
 
       <button 
         onClick={() => handleLogout()}
-        className="fixed bottom-10 left-32 transform -translate-x-1/2 flex items-center justify-center font-semibold h-12 w-60 xs:w-44 gap-2 text-white bg-secondary 
+        className="absolute top-0  left-60 sm:left-32 sm:bottom-0 transform -translate-x-1/2 flex items-center justify-center font-semibold h-12 w-32 sm:2-60 xs:w-44 gap-2 text-white bg-secondary 
         rounded-md shadow-md transition-all duration-300 ease-in-out medium-16">
         Logout
       </button>

@@ -22,7 +22,7 @@ const Header = () => {
         {/* bg-secondary rounded-full */}
           <div className='h-24 w-90 flexCenter absolute top-0 px-2'>
             <Link to ={'/'}>
-              <img src={mainlogo} alt="logo" className="h-[50px] w-[200px] sm:h-[50px] sm:w-[240px] md:h-[60px] md:w-[300px] bg-white" />
+              <img src={mainlogo} alt="logo" className="h-[50px] w-[150px] sm:h-[50px] sm:w-[240px] md:h-[60px] md:w-[300px] bg-white" />
             </Link>
           </div>
         </div>
@@ -42,7 +42,7 @@ const Header = () => {
         <div className="flexBetween sm:gap-x-2 bold-16">
           <div className="flexBetween sm:gap-x-6">
             <NavLink to={"/wishlist"} className="flex">
-              <img src={wsIcon} alt="wishlist" width={25} className="p-1 h-10 w-10 hover:text-secondary"/>
+              <img src={wsIcon} alt="wishlist" width={25} className="p-1 h-8 w-8  sm:h-10 sm:w-10 hover:text-secondary"/>
               <span className="relative flexCenter w-5 h-5 rounded-full text-primary bg-red-600 medium-14 -top-1">{getNumberofItems()}</span>
             </NavLink>
             
