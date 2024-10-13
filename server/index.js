@@ -9,7 +9,12 @@ const cors = require("cors")
 app.use(express.json())
 app.use(cors())
 
-const url =  "mongodb+srv://davismuchiri21:G4sfhlN4NsUbGQYm@cluster0.mddsf.mongodb.net/NiceBoutique?retryWrites=true&w=majority&appName=Cluster0"
+const jwt = require('jsonwebtoken');
+
+
+require('dotenv').config();
+
+const url = process.env.MONGODB_URI
 
 mongoose.connect(url,{
   serverSelectionTimeoutMS: 30000,
@@ -113,10 +118,84 @@ app.post('/delete-product',async (req,res) => {
 
 app.get('/products', async (req, res) => {
   let products = await Product.find({})
-  console.log(products)
+  // console.log(products)
   res.send(products)
 
 });
+
+//user schema
+const User = mongoose.model('User', {
+  email:{
+    type:String,
+    unique:true,
+  },
+  password:{
+    type:String,
+  },
+  date:{
+    type:Date,
+    default:Date.now
+  }
+})
+
+// app.post('/admin/register', async ( req,res ) => {
+//   let existingUser = await User.findOne({ email: req.body.email })
+//   if (existingUser){
+//     return res.status(400).json({
+//       success:false,
+//       errors:"Email already registered"
+//     })
+//   }
+
+//   const user =  new User({
+//     email:req.body.email,
+//     password:req.body.password,
+//   })
+
+//   await user.save()
+//   const data = {
+//     user: {
+//       id:user.id,
+//     }
+//   }
+//   const token = jwt.sign(data,"secret")
+//   res.json({
+//     success:true,
+//     token
+//   })
+// })
+
+app.post('/admin',async(req,res) => {
+  let user = await User.findOne({
+    email:req.body.email
+  })
+  if (user) {
+    const passwordValid = req.body.password === user.password
+
+    if (passwordValid){
+      const data = {
+        user:{
+          id:user.id
+        },
+      }
+      const token = jwt.sign(data,"secret")
+      res.json({
+        success:true,
+        token
+      })
+    } else {
+      res.json({
+        success:false,
+        errors:"Wrong password"
+      })
+    }
+  } else {
+    res.json({
+      success:false,
+      errors:"Wrong Email address"
+    })
+  }
+})
 
 app.listen(PORT,(error) => {
   if (!error){
