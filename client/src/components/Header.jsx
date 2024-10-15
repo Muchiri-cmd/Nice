@@ -16,13 +16,13 @@ const Header = () => {
   const {getNumberofItems} = useContext(ShopContext)
 
   return (
-    <header className="max-padd-container w-full z-10 py-5 bg-white fixed left-1/2 transform -translate-x-1/2">
+    <header className="max-padd-container w-full z-10 py-4 bg-white fixed left-1/2 transform -translate-x-1/2">
       <div className="flexBetween py-1">
         <div className='flex flex-1'>
         {/* bg-secondary rounded-full */}
           <div className='h-24 w-90 flexCenter absolute top-0 px-2'>
             <Link to ={'/'}>
-              <img src={mainlogo} alt="logo" className="h-[50px] w-[150px] sm:h-[50px] sm:w-[240px] md:h-[60px] md:w-[300px] bg-white" />
+              <img src={mainlogo} alt="logo" className="h-[40px] w-[150px] sm:h-[50px] sm:w-[240px] md:h-[60px] md:w-[300px] bg-white" />
             </Link>
           </div>
         </div>
@@ -43,13 +43,13 @@ const Header = () => {
           <div className="flexBetween sm:gap-x-6">
             <NavLink to={"/wishlist"} className="flex">
               <img src={wsIcon} alt="wishlist" width={25} className="p-1 h-8 w-8  sm:h-10 sm:w-10 hover:text-secondary"/>
-              <span className="relative flexCenter w-5 h-5 rounded-full text-primary bg-red-600 medium-14 -top-1">{getNumberofItems()}</span>
+              <span className="relative flexCenter w-3 h-4 sm:w-6 sm:h-6 rounded-full text-primary bg-red-600 medium-14 -top-1">{getNumberofItems()}</span>
             </NavLink>
             
           </div>
           {toggledMenu 
-            ? (<MdClose className="sm:hidden cursor-pointer ring-1 ring-slate-900/10 mr-2 p-2 h-10 w-10 rounded-full" onClick={() => toggleMenu()}/>)
-            : (<MdMenu className="sm:hidden cursor-pointer ring-1 ring-slate-900/10 mr-2 p-2 h-10 w-10 rounded-full" onClick={() => toggleMenu()}/>)
+            ? (<MdClose className="sm:hidden cursor-pointer ring-1 ring-slate-900/10 mr-2 p-2 h-8 w-8 rounded-full" onClick={() => toggleMenu()}/>)
+            : (<MdMenu className="sm:hidden cursor-pointer ring-1 ring-slate-900/10 mr-2 p-2 h-8 w-8 rounded-full" onClick={() => toggleMenu()}/>)
           }
         </div>
       </div>

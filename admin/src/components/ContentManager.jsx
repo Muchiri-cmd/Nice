@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import upload_area from '../assets/upload_area.svg'
 import { MdAdd } from 'react-icons/md'
+import { useNavigate } from 'react-router-dom';
 
 const ContentManager = () => {
 
@@ -14,6 +15,8 @@ const ContentManager = () => {
     current_price:""
   })
 
+  const navigate = useNavigate();
+    
   const imageHandler = (e) => {
     setImage(e.target.files[0])
   }
@@ -26,6 +29,18 @@ const ContentManager = () => {
   }
 
   const addProduct = async () => {
+
+   
+    if (!productDetails.name || !productDetails.initial_price || !productDetails.current_price || !productDetails.category) {
+      alert("Please fill in all fields");
+      return;
+    }
+
+    if (!image) {
+      alert("Please select an image");
+      return;
+    }
+    
     console.log(productDetails)
     let responseData;
     let product = productDetails
@@ -53,45 +68,87 @@ const ContentManager = () => {
         },
         body:JSON.stringify(product),
       }).then((resp) => resp.json()).then((data) => {data.success?alert("Product Added"): alert("Upload failed")})
+
+      navigate('/products-list')
     }
-  }
+   }
 
   return (
     <div className='p-8 box-border bg-white  w-full rounded-sm mt-4 lg:m-7'>
-      <div className="mb-3">
-        <h4 className='bold-18 pb-2'>Product name:</h4>
-        <input value={productDetails.name} type="text" onChange={changeHandler} name='name' placeholder="product name" className='bg-primary outline-none max-w-80 w-full py-3 px-4 rounded-md' />
+      <h4 className="text-2xl font-bold mb-6">Add New Product</h4>
+
+      <div className="mb-4">
+        <label htmlFor="name" className="block text-3xl font-semibold mb-2">Product Name:</label>
+        <input 
+            id="name" 
+            value={productDetails.name} 
+            type="text" 
+            onChange={changeHandler} 
+            name="name" 
+            placeholder="Enter product name" 
+            className="bg-gray-100 border border-gray-300 outline-none w-full py-3 px-4 rounded-md transition duration-200 focus:ring focus:ring-blue-500 text-2xl"
+            required
+        />
       </div>
       
-      <div className="mb-3">
-        <h4 className='bold-18 pb-2'>Initial Price: </h4>
-        <input value={productDetails.initial_price} onChange={changeHandler} type="text" name='initial_price' placeholder="initial cost" className='bg-primary outline-none max-w-80 w-full py-3 px-4 rounded-md' />
-      </div>
+      <div className="mb-4">
+        <label htmlFor="initial_price" className="block text-3xl font-semibold mb-2">Initial Price:</label>
+        <input 
+            id="initial_price" 
+            value={productDetails.initial_price} 
+            onChange={changeHandler} 
+            type="number" 
+            name="initial_price" 
+            placeholder="Enter initial cost" 
+            className="bg-gray-100 border border-gray-300 outline-none w-full py-3 px-4 rounded-md transition duration-200 focus:ring focus:ring-blue-500 text-2xl"
+            required
+        />
+    </div>
 
-      <div className="mb-3">
-        <h4 className='bold-18 pb-2'>Offer Price: </h4>
-        <input value={productDetails.current_price} onChange={changeHandler} type="text" name='current_price' placeholder="current price" className='bg-primary outline-none max-w-80 w-full py-3 px-4 rounded-md' />
-      </div>
+    <div className="mb-4">
+        <label htmlFor="current_price" className="block text-3xl font-semibold mb-2">Offer Price:</label>
+        <input 
+            id="current_price" 
+            value={productDetails.current_price} 
+            onChange={changeHandler} 
+            type="number" 
+            name="current_price" 
+            placeholder="Enter current price" 
+            className="bg-gray-100 border border-gray-300 outline-none w-full py-3 px-4 rounded-md transition duration-200 focus:ring focus:ring-blue-500 text-2xl"
+            required
+        />
+    </div>
 
-      <div className="mb-3 flex items-center gap-x-4">
-        <h4 className='bold-18 pb-2'>Product Category</h4>
-        <select value={productDetails.category} onChange={changeHandler}  name='category' className='bg-primary ring-1 ring-slate-900/20 medium-16 rounded-sm outline-none'>
-          <option value="men">men</option>
-          <option value="women">women</option>
-          <option value="kids">kids</option>
+    <div className="mb-4">
+        <label htmlFor="category" className="block text-3xl font-semibold mb-2">Product Category:</label>
+        <select 
+            id="category" 
+            value={productDetails.category} 
+            onChange={changeHandler} 
+            name="category" 
+            className="bg-gray-100 border border-gray-300 outline-none w-full py-3 px-4 rounded-md transition duration-200 focus:ring focus:ring-blue-500 text-2xl"
+            required
+        >
+            <option value="men">Men</option>
+            <option value="women">Women</option>
+            <option value="kids">Kids</option>
         </select>
-      </div>
+    </div>
 
-      <div>
-        <label htmlFor="file-input">
+      <div className="mb-4">
+        <label htmlFor="file-input"
+          className="block text-3xl font-semibold mb-2"
+        > Upload Image
+          <p>(Click to upload)</p>
           <img src={image?URL.createObjectURL(image):upload_area} alt="" 
-          className="rounded-sm inline-block "
+          className="cursor-pointer"
           />
         </label>
-        <input onChange={imageHandler} type="file" name="image" id='file-input' hidden className='bg-primary max-w-80 w-full py-3 px-4'/>
+        
+        <input  required onChange={imageHandler} type="file" name="image" id='file-input' hidden className='bg-primary max-w-80 w-full py-3 px-4' />
       </div>
 
-      <button className='btn-dark mt-4 flexCenter gap-x-1 rounded-md' onClick={() => addProduct()}><MdAdd />Add Product</button>
+      <button className="btn-dark mt-4 flex items-center justify-center gap-x-2 rounded-md py-3 bg-blue-600 text-white hover:bg-secondary transition duration-200 w-full" onClick={() => addProduct()}><MdAdd />Add Product</button>
 
     </div>
    

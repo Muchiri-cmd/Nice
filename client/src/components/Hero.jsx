@@ -2,11 +2,11 @@ import { FaArrowRightLong } from "react-icons/fa6"
 
 const Hero = () => {
   return (
-    <section className='max-padd-container mx-5 '>
+    <section className='sm:max-padd-container sm:mx-5'>
     <div className="h-[70px]"></div>
-    <div className='relative max-padd-container bg-hero bg-center bg-no-repeat bg-cover h-screen w-full rounded-3xl'>
+    <div className='relative sm:max-padd-container bg-hero bg-center bg-no-repeat bg-cover h-screen sm:rounded-3xl sm:w-full w-[100vw]'>
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black opacity-20 rounded-3xl"></div>
+      <div className="absolute inset-0 bg-black opacity-20 sm:rounded-3xl"></div>
       
       <div className="relative top-32 xs:top-80">
         <h2 className='h2 capitalize max-w-[60rem] mx-5 text-white font-bold text-18'> 

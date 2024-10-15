@@ -2,6 +2,8 @@ import { useContext } from "react"
 import { ShopContext } from "../context/Shop"
 import { TbTrash } from 'react-icons/tb'
 import { whatsappicon } from "../assets";
+import { Link } from "react-router-dom";
+import { FaEye } from "react-icons/fa6";
 
 const WishListItems = () => {
 
@@ -52,6 +54,7 @@ const WishListItems = () => {
               <th className='p-1 py-2'>Liked Items</th>
               <th className='p-1 py-2'>Title</th>
               <th className='p-1 py-2'>Price</th>
+              <th className='p-1 py-2'>View</th>
               <th className='p-1 py-2'>Remove</th>
             </tr>
           </thead>
@@ -63,11 +66,27 @@ const WishListItems = () => {
                   <tr key={item.id} 
                     className="border-b border-slate-900/20 text-gray-30 p-6 medium-16 sm:text-center">
                     <td className='flexCenter'>
+                    <Link to={`/products/${item.id}`} className='group'>
                       <img src={item.image} alt="product image" height={43} width={43} 
                       className="rounded-lg ring-1 ring-slate-900/5 my-1"/>
+                    </Link>
+                      
                     </td>
-                    <td><div className='line-clamp-5'>{item.name}</div></td>
-                    <td>{item.current_price} kes</td>
+                    <td><div className='line-clamp-5'>
+                    <Link to={`/products/${item.id}`} className='group'>
+                      {item.name}
+                    </Link>
+                    </div></td>
+                    <td>
+                      <Link to={`/products/${item.id}`} className='group'>
+                        {item.current_price} kes
+                      </Link>
+                    </td>
+                    <td>
+                      <Link to={`/products/${item.id}`} className='group'>
+                        <FaEye className=' rounded-full h-7 w-7 sm:h-10 sm:w-10 group-hover:scale-110 transition-all duration-500 bold-22 relative left-1/2' />
+                      </Link>
+                    </td>
                     <td>
                       <div className='bold-22 relative left-1/2'>
                         <TbTrash onClick={() => {
@@ -91,10 +110,10 @@ const WishListItems = () => {
             <div>
               <div className='flexBetween py-4'>
                 <h4 className="bold-18">Total</h4>
-                <h4 className='text-gray-30 font-semibold'>{getTotal()}</h4>
+                <h4 className='text-gray-30 font-semibold text-[20px]'>{getTotal()}</h4>
               </div>
             </div>
-            <button className=' rounded-md flex items-center gap-x-5 px-1 btn-dark '
+            <button className='rounded-md flex items-center gap-x-5 px-2 bg-green-400 h-14 sm:h-20 sm:text-[18px] max-w-64'
                   onClick={() => sendWhatsappMessage()}
                 >Whatsapp Me
                   <img src={whatsappicon} alt="whatsapp" width={25} className="p-1 h-10 w-10 sm:h-16  sm:w-16 "/>

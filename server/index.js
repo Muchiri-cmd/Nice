@@ -6,6 +6,7 @@ const multer = require("multer")
 const path = require("path")
 const cors = require("cors")
 
+
 app.use(express.json())
 app.use(cors())
 
@@ -84,6 +85,10 @@ const Product = mongoose.model("Product", {
 app.post('/add-product',async (req,res) => {
   let products = await Product.find({})
   let id
+  
+  if (products.length === 0)
+    id = 1
+
   if (products.length > 0){
     let last_product_array = products.slice(-1)
     let last_product = last_product_array[0]
@@ -98,15 +103,47 @@ app.post('/add-product',async (req,res) => {
     current_price:req.body.current_price,
     initial_price:req.body.initial_price,
   })
-  console.log(product)
+  // console.log(product)
   await product.save()
-  console.log("Product saved")
+  // console.log("Product saved")
 
   res.json({
     success:true,
     message:"Product saved"
   })
 })
+
+
+
+app.post('/update-product', upload.single('image'), async (req, res) => {
+  try {
+    const { id, name, initial_price, current_price, category } = req.body;
+    
+    let updateData = {
+      name,
+      initial_price,
+      current_price,
+      category
+    };
+
+    if (req.file) {
+      updateData.image = `/uploads/${req.file.filename}`;
+    }
+
+    const updatedProduct = await Product.findByIdAndUpdate(id, updateData, { new: true });
+
+    if (!updatedProduct) {
+      return res.status(404).json({ message: 'Product not found' });
+    }
+
+    res.json(updatedProduct);
+  } catch (error) {
+    console.error('Error updating product:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+
 
 app.post('/delete-product',async (req,res) => {
   await Product.findOneAndDelete({id:req.body.id})
