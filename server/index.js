@@ -32,10 +32,10 @@ app.get('/',(req,res) => {
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'upload/images')// relative path within project
+    cb(null, 'upload/images');
   },
   filename: function (req, file, cb) {
-    cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
+    cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`);
   }
 });
 
@@ -114,32 +114,39 @@ app.post('/add-product',async (req,res) => {
 })
 
 
-
-app.post('/update-product', upload.single('image'), async (req, res) => {
+//update product
+app.put('/update-product/:id', upload.single('image'), async (req, res) => {
   try {
-    const { id, name, initial_price, current_price, category } = req.body;
-    
-    let updateData = {
-      name,
-      initial_price,
-      current_price,
-      category
+    const productId = parseInt(req.params.id);
+    const updatedData = {
+      name: req.body.name,
+      category: req.body.category,
+      current_price: req.body.current_price,
+      initial_price: req.body.initial_price
     };
 
     if (req.file) {
-      updateData.image = `/uploads/${req.file.filename}`;
+      updatedData.image = `http://localhost:${PORT}/images/${req.file.filename}`;
     }
 
-    const updatedProduct = await Product.findByIdAndUpdate(id, updateData, { new: true });
+    const updatedProduct = await Product.findOneAndUpdate(
+      { id: productId },
+      updatedData,
+      { new: true }
+    );
 
     if (!updatedProduct) {
-      return res.status(404).json({ message: 'Product not found' });
+      return res.status(404).json({ success: false, message: "Product not found" });
     }
 
-    res.json(updatedProduct);
+    res.json({
+      success: true,
+      message: "Product updated successfully",
+      product: updatedProduct
+    });
   } catch (error) {
     console.error('Error updating product:', error);
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ success: false, message: "Error updating product", error: error.message });
   }
 });
 

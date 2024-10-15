@@ -41,7 +41,7 @@ const ContentManager = () => {
       return;
     }
     
-    console.log(productDetails)
+    // console.log(productDetails)
     let responseData;
     let product = productDetails
 

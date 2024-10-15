@@ -51,7 +51,10 @@ const ShopContextProvider = (props) => {
     for (const item in wishlistItems) {
       if (wishlistItems[item] > 0) {
         let itemInfo = all_products.find((product) => product.id === Number(item))
-        totalAmount += itemInfo.current_price * wishlistItems[item]
+        if (itemInfo){
+          totalAmount += itemInfo.current_price * wishlistItems[item]
+        }
+     
       }
     }
     return totalAmount

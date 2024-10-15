@@ -9,8 +9,6 @@ const WishListItems = () => {
 
   const {all_products,wishlistItems,removeFromWishlist,getTotal } = useContext(ShopContext)
 
-  console.log(all_products)
-  
  const sendWhatsappMessage = () => {
   const phoneNumber = "+254113708866";
   const wishlistProducts = all_products.filter(item => wishlistItems[item.id] > 0);
